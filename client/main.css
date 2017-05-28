@@ -1,1 +1,204 @@
-/* CSS declarations go here */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    width: 100vw;
+    height: 100px;
+    background-color: #F7F7F7;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e4e4e4;
+    position: fixed;
+    display: flex;
+}
+.navbar .navbar-container .logo img {
+    width: 100%;
+    height: 100%;
+    margin: 0px 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.navbar .navbar-container .logo {
+    width: 50px;
+    height: 50px;
+}
+.navbar .navbar-container .navigation-left ul li {
+    font-size: 16px;
+    color: rgba(0,0,0,.8);
+    margin: 0px 20px;
+    line-height: 17px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+
+.navbar .navbar-container .navigation-left ul {
+    display: flex;
+    list-style: none;
+}
+.navbar .navbar-container .navigation-left {
+    position: absolute;
+    width: 50%;
+    bottom: 12px;
+}
+.navbar .navbar-container {
+    width: 95%;
+    height: 100px;
+    margin: 0 auto;
+    padding: 10px 5px;
+    display: flex;
+    flex-flow: column;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 100px 0px 0px;
+}
+.login-form {
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    height: 100%;
+}
+.login-form .login-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF;
+    width: 40%;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .24), 0 4px 4px 0 rgba(0, 0, 0, .12);
+}
+.login-form .form-container {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    background-color: #F7F7F7;
+    width: 60%;
+}
+.login-form .form-container .signup-container {
+    width: 40%;
+    padding: 20px 0px;
+    margin-top: 20px;
+    border-top: 1.5px solid #DBDBDB;
+}
+.login-form .login-info .text-container {
+    width: 70%;
+    padding: 10px 0px;
+    display: flex;
+    flex-flow: column;
+}
+.login-form .login-info .text-container .paragraph {
+    font-size: 15px;
+    color: rgba(0,0,0,.8);
+    margin: 20px 0px;
+    line-height: 17px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+.login-form .login-info .text-container .title {
+    color: rgba(0, 0, 0, .87);
+    font-weight: 500;
+    font-size: 12px;
+    font-family: 'Quicksand', sans-serif;
+}
+.login-form .form-container .input-container {
+    width: 40%;
+    height: 45px;
+    margin: 15px auto;
+}
+.login-form .form-container .signup-container .signup-btn {
+    margin: 0px 0px 15px;
+}
+button:hover {
+    cursor: pointer;
+}
+.login-form .form-container .signup-container .signup-btn button:hover {
+    background-color: #007947;
+    color: #FFF;
+}
+.login-form .form-container .signup-container .signup-btn button:focus {
+    outline: none;
+}
+
+.login-form .form-container .signup-container .signup-btn button {
+    height: 40px;
+    width: 100px;
+    padding: 5.5px 10px;
+    line-height: 15px;
+    background-color: transparent;
+    border: 1px solid #00a862;
+    color: #00a862;
+    font-weight: 700;
+    font-size: 14px;
+    word-wrap: break-word;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 13px;
+}
+.login-form .form-container .signup-container .info p {
+    font-size: 14px;
+    color: rgba(0,0,0,.8);
+    margin: 0px 0px 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+.login-form .form-container .signup-container .info .title {
+    font-size: 20px;
+    color: rgba(0,0,0,.9);
+    margin: 0px 0px 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+.login-form .form-container .signup-container .title {
+    font-size: 15px;
+    color: #A4A4A4;
+    margin: 0px 0px 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+.login-form .form-container .input-container label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #484848;
+}
+.login-form .form-container .input-container input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 10px;
+    margin: 15px 0px;
+    border-bottom: 1px solid #DBDBDB;
+    width: 100%;
+    color: rgba(0, 0, 0, .9);
+}
+.login-form .form-container .input-container input::-webkit-input-placeholder {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+.login-form .form-container .input-container input:focus {
+    border-bottom: 2px solid #00a862;
+    outline: none;
+}
+.login-form .form-container .input-container button {
+    background-color: transparent;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 10px;
+    padding: 20px 0px;
+    border-radius: 3px;
+    width: 100%;
+    color: #FFF;
+    background-color: #00a862;
+}
