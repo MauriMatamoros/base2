@@ -50,21 +50,11 @@ class Login extends Component {
                         <button onClick={this.login}>Ingresar</button>
                     </div>
                     <div className="signup-container">
+                      <Link to="signup" className="register-link">
                         <div className="title">
                             Regístrate a eChef
                         </div>
-                        <div className="signup-btn">
-                            <Link to="/signup"><button>Registrarse ahora</button></Link>
-                        </div>
-                        <div className="info">
-                            <div className="title">
-                                Create an account and bring on the rewards!
-                            </div>
-                            <p>
-                                Join Starbucks Rewards to earn free food and drinks,
-                                get free refills, pay an order with your phone, and more.
-                            </p>
-                        </div>
+                      </Link>
                     </div>
                 </div>
             </div>

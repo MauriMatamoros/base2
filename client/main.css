@@ -232,6 +232,7 @@ button:hover {
     width: 40%;
     height: 30px;
     margin: 10px 0px;
+    color: #00a862;
 }
 .recipes-form .form-container {
     width: 50%;
@@ -256,4 +257,8 @@ button:hover {
     flex-flow: column;
     justify-content: center;
     align-items: center;
+}
+
+.register-link {
+  color: #00a862;
 }
