@@ -1,1 +1,3 @@
-export const LOGGED_USER = 'LOGGED_USER';
+export const CHEF_USER = 'CHEF_USER';
+export const ADMIN_USER = 'ADMIN_USER';
+export const USER = 'USER';

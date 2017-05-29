@@ -1,23 +1,50 @@
 import React, { Component } from 'react';
 import { Navbar } from './common/index';
-import { LOGGED_USER } from '../../environment/environment';
+import { CHEF_USER, ADMIN_USER, USER } from '../../environment/environment';
 
 class Layout extends Component {
     passProps(params) {
         switch (params) {
-            case LOGGED_USER:
+            case CHEF_USER:
                 return (
                     <div className="navbar-container">
                         <div className="logo">
                             <img src="./icons/cook-hat.svg" alt=""/>
                         </div>
+                        <span>eChef</span>
                         <div className="navigation-left">
                             <ul>
-                                <li>Menú</li>
-                                <li>Menú</li>
-                                <li>Menú</li>
-                                <li>Menú</li>
-                                <li>Menú</li>
+                                <li>Ordenes</li>
+                            </ul>
+                        </div>
+                    </div>
+                );
+            case ADMIN_USER:
+                return (
+                    <div className="navbar-container">
+                        <div className="logo">
+                            <img src="./icons/cook-hat.svg" alt=""/>
+                        </div>
+                        <span>eChef</span>
+                        <div className="navigation-left">
+                            <ul>
+                                <li>Recetas</li>
+                                <li>Subir Recetas</li>
+                            </ul>
+                        </div>
+                    </div>
+                );
+            case USER:
+                return (
+                    <div className="navbar-container">
+                        <div className="logo">
+                            <img src="./icons/cook-hat.svg" alt=""/>
+                        </div>
+                        <span>eChef</span>
+                        <div className="navigation-left">
+                            <ul>
+                                <li>Recetas</li>
+                                <li>Favoritos</li>
                             </ul>
                         </div>
                     </div>
@@ -28,6 +55,7 @@ class Layout extends Component {
                         <div className="logo">
                             <img src="./icons/cook-hat.svg" alt=""/>
                         </div>
+                        <span>eChef</span>
                     </div>
                 );
         }
