@@ -7,7 +7,7 @@ Meteor.startup(() => {
   Meteor.methods({
     'Recipes.nuevaReceta'( data ) {
       var nuevaReceta = {
-        ingredientes: data.ingredientes,
+        ingredientes: data.ingredients,
         tipo: data.tipo,
         tiempo: data.tiempo,
         precio: data.precio

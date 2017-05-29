@@ -9,13 +9,13 @@ export default class Recipes extends Component {
     }
     handleSubmit(e) {
       e.preventDefault();
-      let nombre = e.target.name.value;
+      let nombre = this.refs.name.value;
       let tipo = this.refs.type.value;
-      let precio = e.target.price.value;
-      let tiempo = e.target.price.value;
-      let ingredients = e.target.price.value;
+      let precio = this.refs.price.value;
+      let tiempo = this.refs.time.value;
+      let ingredients = this.refs.ingredients.value;
 
-      if(nombre && tipo && precio && tiempo && ingredientes) {
+      if(nombre && tipo && precio && tiempo && ingredients) {
         let recipe = {
           nombre,
           tipo,
@@ -23,10 +23,15 @@ export default class Recipes extends Component {
           tiempo,
           ingredients
         };
-        Meteor.call('Recipes', recipe, (err) => {
+        Meteor.call('Recipes.nuevaReceta', recipe, (err) => {
           if (err) {
             alert(`Error, al agregar`);
           } else {
+              this.refs.name.value = ''
+            this.refs.type.value = ''
+            this.refs.price.value = ''
+            this.refs.time.value = ''
+            this.refs.ingredients.value = ''
             alert('Se agrego exitosamente');
           }
         });
@@ -34,7 +39,7 @@ export default class Recipes extends Component {
     };
     render() {
         return (
-          <form onSubmit={this.handleSubmit()}>
+          <form onSubmit={this.handleSubmit}>
             <div className="recipes-form">
                 <div className="title">
                     Agrega tus recetas
