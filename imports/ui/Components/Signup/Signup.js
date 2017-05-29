@@ -29,7 +29,7 @@ class Signup extends Component {
         if (error) {
           alert("there was an error: " + error.reason);
         } else {
-          browserHistory.push('/home');
+          browserHistory.push('/recipes');
         };
       }
     );
