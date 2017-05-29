@@ -1,7 +1,40 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
+import { Accounts } from 'meteor/accounts-base';
 
 class Signup extends Component {
+    constructor(props) {
+      super(props);
+      this.signup = this.signup.bind(this);
+    }
+    signup(){
+      var nombre = this.refs.name.value;
+      var apellido = this.refs.lastname.value;
+      var domicilio = this.refs.address.value;
+      var username = this.refs.username.value;
+      var password = this.refs.password.value;
+      var numTarjeta = this.refs.creditcard.value;
+      var codigo = this.refs.securitycode.value;
+
+      Accounts.createUser( { username: username, password: password, profile:
+        {
+          name: nombre,
+          lastname: apellido,
+          address: domicilio,
+          creditcard: numTarjeta,
+          securitycode: codigo
+        }
+       }, function(error) {
+        if (error) {
+          alert("there was an error: " + error.reason);
+        } else {
+          browserHistory.push('/home');
+        };
+      }
+    );
+    }
+
     render() {
         return (
             <div className="login-form">
@@ -41,7 +74,7 @@ class Signup extends Component {
                         <input type="text" ref="securitycode" placeholder="Código de seguridad"/>
                     </div>
                     <div className="input-container" style={{marginTop: 55}}>
-                        <button>Registrar</button>
+                        <button onClick={this.signup}>Registrar</button>
                     </div>
                 </div>
             </div>
