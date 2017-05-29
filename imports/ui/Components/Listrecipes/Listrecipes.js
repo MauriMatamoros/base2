@@ -11,21 +11,29 @@ class Listrecipes extends Component {
                     <h1>Menú de eChef</h1>
                 </div>
                 <ul className="listing">
-                    <li>
-                        <div className="list-element">
-                            <div className="list-image">
-                                <img src="./icons/cook-hat.svg" alt=""/>
-                            </div>
-                            <div className="list-title">
-                                Nombre de la receta
-                            </div>
-                            <div className="favorites-container">
-                                <div className="image-container">
-                                    <img src="./icons/star.svg" alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    {
+                        this.props.recipes.length > 0 ? (
+                            this.props.recipes.map( recipe => (
+                                <li>
+                                    <div className="list-element">
+                                        <div className="list-image">
+                                            <img src="./icons/cook-hat.svg" alt=""/>
+                                        </div>
+                                        <div className="list-title">
+                                            {recipe.nombre}
+                                        </div>
+                                        <div className="favorites-container">
+                                            <div className="image-container">
+                                                <img src="./icons/star.svg" alt=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            ))
+                        ) : (
+                            <h1>No hay recetas</h1>  
+                        )
+                    }
                 </ul>
             </div>
         );
