@@ -9,10 +9,10 @@ export default class Recipes extends Component {
     }
     handleSubmit(e) {
       e.preventDefault();
-      let nombre = e.target.name.value.trim();
-      let tipo = this.refs.type.value.trim();
-      let precio = e.target.price.value.trim();
-      let tiempo = e.target.price.value.trim();
+      let nombre = e.target.name.value;
+      let tipo = this.refs.type.value;
+      let precio = e.target.price.value;
+      let tiempo = e.target.price.value;
       let ingredients = e.target.price.value;
 
       if(nombre && tipo && precio && tiempo && ingredientes) {
@@ -34,7 +34,7 @@ export default class Recipes extends Component {
     };
     render() {
         return (
-          <form onSubmit={handleSubmit(e)}>
+          <form onSubmit={this.handleSubmit()}>
             <div className="recipes-form">
                 <div className="title">
                     Agrega tus recetas
