@@ -23,7 +23,8 @@ class Signup extends Component {
           lastname: apellido,
           address: domicilio,
           creditcard: numTarjeta,
-          securitycode: codigo
+          securitycode: codigo,
+          role: 'Cliente'
         }
        }, function(error) {
         if (error) {

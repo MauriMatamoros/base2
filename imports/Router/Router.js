@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { Tracker } from 'meteor/tracker';
 import React from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import { Layout, Login, Recipes, Signup } from '../ui/Components/index';
+import { Login, Signup } from '../ui/Components/index';
+import Recipes from '../ui/Components/Recipes/Recipes';
+import Layout from '../ui/Components/Layout';;
 
 
 const authenticatedPages = ['/recipes'];
@@ -31,6 +33,5 @@ Tracker.autorun(() => {
 });
 
 Meteor.startup(() => {
-    console.log(Meteor.userId());
     ReactDOM.render(routes, document.getElementById('app'))
 });

@@ -1,79 +1,126 @@
 import React, { Component } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Navbar } from './common/index';
+import { browserHistory } from 'react-router';
+import { createContainer } from 'meteor/react-meteor-data';
 import { CHEF_USER, ADMIN_USER, USER } from '../../environment/environment';
 
 class Layout extends Component {
-    passProps(params) {
-        switch (params) {
-            case CHEF_USER:
-                return (
-                    <div className="navbar-container">
-                        <div className="logo">
-                            <img src="./icons/cook-hat.svg" alt=""/>
+    constructor(props) {
+        super(props);
+        this.renderNavbarContente = this.renderNavbarContente.bind(this);
+        this.logout = this.logout.bind(this);
+    }
+    logout() {
+        Meteor.logout((error) => {
+            if (!error) {
+                browserHistory.push('/')
+            } else {
+                alert('No se pudo cerrar sesion');
+            }
+        });
+    }
+    renderNavbarContente() {
+        if (this.props.user) {
+            switch (this.props.user.profile.role) {
+                case CHEF_USER:
+                    return (
+                        <div className="navbar-container">
+                            <div className="logo">
+                                <img src="./icons/cook-hat.svg" alt=""/>
+                            </div>
+                            <span>eChef</span>
+                            <div className="navigation-left">
+                                <ul>
+                                    <li>Ordenes</li>
+                                </ul>
+                            </div>
+                            <div className="navigation-right">
+                                <ul>
+                                    <li onClick={this.logout}>Logout</li>
+                                </ul>
+                            </div>
                         </div>
-                        <span>eChef</span>
-                        <div className="navigation-left">
-                            <ul>
-                                <li>Ordenes</li>
-                            </ul>
+                    );
+                case ADMIN_USER:
+                    return (
+                        <div className="navbar-container">
+                            <div className="logo">
+                                <img src="./icons/cook-hat.svg" alt=""/>
+                            </div>
+                            <span>eChef</span>
+                            <div className="navigation-left">
+                                <ul>
+                                    <li>Recetas</li>
+                                    <li>Subir Recetas</li>
+                                </ul>
+                            </div>
+                            <div className="navigation-right">
+                                <ul>
+                                    <li onClick={this.logout}>Logout</li>
+                                </ul>
+                            </div>
                         </div>
+                    );
+                case USER:
+                    return (
+                        <div className="navbar-container">
+                            <div className="logo">
+                                <img src="./icons/cook-hat.svg" alt=""/>
+                            </div>
+                            <span>eChef</span>
+                            <div className="navigation-left">
+                                <ul>
+                                    <li>Recetas</li>
+                                    <li>Favoritos</li>
+                                </ul>
+                            </div>
+                            <div className="navigation-right">
+                                <ul>
+                                    <li onClick={this.logout}>Logout</li>
+                                </ul>
+                            </div>
+                        </div>
+                    );
+                default:
+                    return (
+                        <div className="navbar-container">
+                            <div className="logo">
+                                <img src="./icons/cook-hat.svg" alt=""/>
+                            </div>
+                            <span>eChef</span>
+                        </div>
+                    );
+            }
+        } else {
+            return (
+                <div className="navbar-container">
+                    <div className="logo">
+                        <img src="./icons/cook-hat.svg" alt=""/>
                     </div>
-                );
-            case ADMIN_USER:
-                return (
-                    <div className="navbar-container">
-                        <div className="logo">
-                            <img src="./icons/cook-hat.svg" alt=""/>
-                        </div>
-                        <span>eChef</span>
-                        <div className="navigation-left">
-                            <ul>
-                                <li>Recetas</li>
-                                <li>Subir Recetas</li>
-                            </ul>
-                        </div>
-                    </div>
-                );
-            case USER:
-                return (
-                    <div className="navbar-container">
-                        <div className="logo">
-                            <img src="./icons/cook-hat.svg" alt=""/>
-                        </div>
-                        <span>eChef</span>
-                        <div className="navigation-left">
-                            <ul>
-                                <li>Recetas</li>
-                                <li>Favoritos</li>
-                            </ul>
-                        </div>
-                    </div>
-                );
-            default:
-                return (
-                    <div className="navbar-container">
-                        <div className="logo">
-                            <img src="./icons/cook-hat.svg" alt=""/>
-                        </div>
-                        <span>eChef</span>
-                    </div>
-                );
+                    <span>eChef</span>
+                </div>
+            );
         }
     }
     render() {
         return (
             <div>
                 <Navbar>
-                    {this.passProps()}
+                    <div className="navbar">
+                        {this.renderNavbarContente()}
+                    </div>
                 </Navbar>
                 <div className="container">
-                    {this.props.children && React.cloneElement(this.props.children, {
-                        passProps: this.passProps.bind(this)
-                    })}
+                    {this.props.children && React.cloneElement(this.props.children, {})}
                 </div>
             </div>
         );
     }
 }
 
-export { Layout };
+export default createContainer((props) => {
+    return {
+        user: Meteor.user()
+    };
+}, Layout);

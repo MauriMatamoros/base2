@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
 import { Roles } from 'meteor/alanning:roles';
-import { createContainer } from 'meteor/react-meteor-data';
-import { USER, CHEF_USER, ADMIN_USER} from '../../../environment/environment';
 
-class Recipes extends Component {
-    componentWillMount() {
-        if (Roles.userIsInRole(Meteor.userId(), 'admin-group', 'eChef.com')) {
-            this.props.passProps(ADMIN_USER);
-        }
-        if (Roles.userIsInRole(Meteor.userId(), 'chef-group', 'eChef.com')) {
-            this.props.passProps(CHEF_USER);
-        }
-        if (Roles.userIsInRole(Meteor.userId(), 'client-group', 'eChef.com')) {
-            this.props.passProps(USER);
-        }
-    }
+export default class Recipes extends Component {
     render() {
         return (
             <div className="recipes-form">
@@ -31,6 +18,7 @@ class Recipes extends Component {
                     <div className="input-container">
                         <div className="select-border">
                             <select name="types" id="types">
+                                <option defaultValue value="">Seleccione el tipo</option>
                                 <option value="Postres">Postres</option>
                                 <option value="Ensaladas">Ensaladas</option>
                                 <option value="Mariscos">Mariscos</option>
@@ -53,5 +41,3 @@ class Recipes extends Component {
         );
     }
 }
-
-export { Recipes };

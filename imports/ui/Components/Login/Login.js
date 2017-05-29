@@ -6,10 +6,6 @@ import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 
 class Login extends Component {
-    componentWillMount() {
-        this.props.passProps('HOLA');
-    }
-
     constructor(props) {
       super(props);
       this.login = this.login.bind(this);
