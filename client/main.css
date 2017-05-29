@@ -217,29 +217,85 @@ button:hover {
 .recipes-form .form-container .input-container input:focus {
     outline: none;
 }
+.recipes-form .form-container .input-container .select-border {
+    border: 1px solid #DBDBDB;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 3px;
+}
+.recipes-form .form-container .input-container .select-border select {
+    border: none;
+    border-radius: 5px;
+    padding-right: 10px;
+    height: 35px;
+    width: 100%;
+    line-height: 20px;
+    font-size: 16px;
+    color: #484848;
+    background-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    -moz-appearance: none;
+    background-image: url("./icons/arrow.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 15px;
+}
+.recipes-form .form-container .input-container input::-webkit-input-placeholder {
+    color: #484848;
+}
 .recipes-form .form-container .input-container input {
     width: 100%;
     height: 100%;
-    border: none;
+    border: 1px solid #DBDBDB;
     font-family: 'Quicksand', sans-serif;
     font-size: 16px;
     font-weight: 500;
     padding: 20px 15px;
-    background-color: #F7F7F7;
-
+    color: rgba(0, 0, 0, .9);
+    background-color: transparent;
 }
 .recipes-form .form-container .input-container {
     width: 40%;
     height: 30px;
     margin: 10px 0px;
 }
+.recipes-form .form-container .textarea-container {
+    width: 40%;
+    height: 90px;
+    margin: 10px 0px;
+}
+.recipes-form .form-container .textarea-container textarea::-webkit-input-placeholder {
+    color: #484848;
+}
+.recipes-form .form-container .textarea-container textarea {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #DBDBDB;
+    resize: none;
+    outline: none;
+    border-radius: 2px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 20px 15px;
+    background-color: transparent;
+}
 .recipes-form .form-container {
-    width: 50%;
-    padding: 50px;
+    width: 70%;
+    padding: 30px;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
+}
+.recipes-form .paragraph {
+    width: 40%;
+    font-size: 18px;
+    color: rgba(0,0,0,.9);
+    margin: 0px 0px 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
 }
 .recipes-form .title {
     font-size: 20px;
@@ -247,6 +303,19 @@ button:hover {
     margin: 0px 0px 10px;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
+}
+.recipes-form .input-container button {
+    background-color: transparent;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 10px;
+    padding: 20px 0px;
+    border-radius: 3px;
+    width: 100%;
+    color: #FFF;
+    background-color: #00a862;
 }
 .recipes-form {
     width: 90%;
