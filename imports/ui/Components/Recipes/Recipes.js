@@ -28,13 +28,16 @@ export default class Recipes extends Component {
                         </div>
                     </div>
                     <div className="input-container">
+                        <input type="text" ref="title" placeholder="Nombre"/>
+                    </div>
+                    <div className="input-container">
                         <input type="text" ref="tiempo" placeholder="Tiempo"/>
                     </div>
                     <div className="input-container">
                         <input type="text" ref="precio" placeholder="Precio"/>
                     </div>
                     <div className="input-container">
-                        <button>Ingresar</button>
+                        <button>Guardar</button>
                     </div>
                 </div>
             </div>

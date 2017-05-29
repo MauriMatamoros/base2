@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Navbar } from './common/index';
 import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
 import { createContainer } from 'meteor/react-meteor-data';
 import { CHEF_USER, ADMIN_USER, USER } from '../../environment/environment';
 
@@ -71,8 +72,8 @@ class Layout extends Component {
                             <span>eChef</span>
                             <div className="navigation-left">
                                 <ul>
-                                    <li>Recetas</li>
-                                    <li>Favoritos</li>
+                                    <Link to='/recipes'><li>Recetas</li></Link>
+                                    <Link to='/favorites'><li>Favoritos</li></Link>
                                 </ul>
                             </div>
                             <div className="navigation-right">
