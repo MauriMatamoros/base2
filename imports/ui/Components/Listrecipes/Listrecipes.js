@@ -39,6 +39,11 @@ class Listrecipes extends Component {
                                                 <img src="./icons/star.svg" alt=""/>
                                             </div>
                                         </div>
+                                        <div>
+                                            <div>
+                                                <img src="./icons/order.svg" alt=""/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </li>
                             ))
