@@ -5,7 +5,13 @@ import { Orders } from '../../../api/index';
 
 class Listordenes extends Component {
     handleClickComplete (order) {
-      Meteor.call()
+      Meteor.call('Orders.completarOrden', order._id, (err, res) => {
+          if (!err) {
+              alert('Proceso completado');
+          } else {
+              alert('No se pudo completar la operacion');
+          }
+      });
     }
     render() {
         return (
@@ -17,29 +23,32 @@ class Listordenes extends Component {
                     {
                         this.props.orders.length > 0 ? (
                             this.props.orders.map( order => (
-                                <li>
+                                <li id="myOrders" key={order._id}>
                                     <div className="list-element">
                                         <div className="list-image">
                                             <img src="./icons/cook-hat.svg" alt=""/>
                                         </div>
-                                        <div className="list-title">
-                                            {order.nombre}
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <img src="./icons/order.svg" alt=""/>
+                                        <div className="list-title" style={{margin: 0}}>
+                                            <div className="title">
+                                                Dirección de envío
+                                            </div>
+                                            <div className="content">
+                                                {order.deliveryAddress}
                                             </div>
                                         </div>
-                                        <div>
-                                            <div onClick={() => this.handleClickComplete(order)}>
-                                                <img src="./icons/finished.svg" style={{width:25 + "%"}} alt=""/>
+                                        <div className="order-container" onClick={() => this.handleClickComplete(order) }>
+                                            <div className="image-container">
+                                                <img src="./icons/finished.svg" alt=""/>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                             ))
                         ) : (
-                            <h1>No hay ordenes listas</h1>
+                            <div className="centered-content">
+                                <img src="/icons/desert.svg" alt=""/>
+                                <h1>No hay ordenes para mostrar</h1>
+                            </div>
                         )
                     }
                 </ul>
@@ -49,7 +58,7 @@ class Listordenes extends Component {
 }
 
 export default createContainer((props) => {
-    let data = Meteor.subscribe('orders-by-chef-skill');
+    let data = Meteor.subscribe('orders-by-chef-skill', props.user !== undefined ? props.user.profile.skill : '');
     return {
         orders: Orders.find({}).fetch()
     };

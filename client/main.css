@@ -364,12 +364,26 @@ button:hover {
 }
 .list-container ul li .list-element .list-image {
     width: 100%;
-    height: 70%;
+    height: 50%;
     padding: 10px;
     border-bottom: 1px solid #DBDBDB;
 }
 .list-container ul li .list-element .favorites-container .image-container {
     width: 65px;
+    height: 100%;
+}
+.list-container ul li .list-element .order-container .image-container {
+    width: 65px;
+    height: 100%;
+}
+.list-container ul li#myOrders .list-element .order-container .image-container {
+    width: 80px;
+    height: 100%;
+    margin: 10px 0px;
+    padding: 5px;
+}
+.list-container ul li .list-element .complete-container .image-container {
+    width: 80px;
     height: 100%;
 }
 .list-container ul li .list-element .favorites-container .image-container img {
@@ -378,9 +392,36 @@ button:hover {
     background-size: cover;
     background-position: center;
 }
+.list-container ul li .list-element .order-container .image-container img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.list-container ul li .list-element .complete-container .image-container img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.list-container ul li .list-element .complete-container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #DBDBDB;
+}
+.list-container ul li .list-element .order-container {
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #DBDBDB;
+}
 .list-container ul li .list-element .favorites-container {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     height: 50px;
     display: flex;
@@ -401,8 +442,18 @@ button:hover {
     height: 100%;
     position: relative;
 }
+.list-container ul li:hover {
+    cursor: pointer;
+}
+.list-container ul li#myOrders {
+    width: 300px;
+    height: 250px;
+    list-style: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: #FFF;
+}
 .list-container ul li {
-    width: 200px;
+    width: 300px;
     height: 300px;
     list-style: none;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -415,10 +466,23 @@ button:hover {
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
 }
+.list-container .listing .centered-content img {
+    width: 100px;
+    height: 100px;
+}
+.list-container .listing .centered-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
 .list-container .listing {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-flow: row wrap;
 }
 .list-container {
     width: 95%;

@@ -52,8 +52,7 @@ class Layout extends Component {
                             <span>eChef</span>
                             <div className="navigation-left">
                                 <ul>
-                                    <li>Recetas</li>
-                                    <li>Subir Recetas</li>
+                                    <Link to="/dashboard"><li>Subir Recetas</li></Link>
                                 </ul>
                             </div>
                             <div className="navigation-right">

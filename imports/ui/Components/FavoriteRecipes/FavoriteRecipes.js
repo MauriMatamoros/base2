@@ -26,7 +26,10 @@ class Favoriterecipes extends Component {
                                 </li>
                             ))
                         ) : (
-                            <h1>No hay recetas favoritas</h1>
+                            <div className="centered-content">
+                                <img src="/icons/desert.svg" alt=""/>
+                                <h1>No hay recetas favoritas</h1>
+                            </div>
                         )
                     }
                 </ul>

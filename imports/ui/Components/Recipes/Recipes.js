@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
 
 export default class Recipes extends Component {

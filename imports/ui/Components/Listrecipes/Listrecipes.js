@@ -4,16 +4,22 @@ import { Meteor } from 'meteor/meteor';
 import { Recipes } from '../../../api/index';
 
 class Listrecipes extends Component {
-  handleClickFavorites(order) {
-    if (order) {
+  constructor(props) {
+    super(props);
+    this.handleClickComplete = this.handleClickComplete.bind(this);
+  }
+  handleClickComplete(recipe) {
+    if (recipe) {
       let data = {
         deliverAddress: this.props.user.profile.address,
-        username: this.props.user.profile.username,
-        order
+        username: this.props.user.username,
+        recipe
       };
       Meteor.call('Orders.nuevaOrden', data, function (err) {
           if (err) {
               alert('No se pudo completar la operacion');
+          } else {
+            alert('Orden realizada');
           }
       });
     }
@@ -45,21 +51,24 @@ class Listrecipes extends Component {
                                         <div className="list-title">
                                             {recipe.nombre}
                                         </div>
+                                        <div onClick={() => this.handleClickComplete(recipe)} className="order-container">
+                                            <div className="image-container">
+                                                <img src="./icons/order.svg" alt=""/>
+                                            </div>
+                                        </div>
                                         <div className="favorites-container" onClick={() => this.handleClickFavorites(recipe)}>
                                             <div className="image-container">
                                                 <img src="./icons/star.svg" alt=""/>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div onClick={() => this.handleClickComplete(recipe).bind(this)}>
-                                                <img src="./icons/order.svg" style={{width:25 + "%"}} alt=""/>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                             ))
                         ) : (
-                            <h1>No hay recetas</h1>
+                          <div className="centered-content">
+                              <img src="/icons/desert.svg" alt=""/>
+                              <h1>No hay recetas</h1>
+                          </div>
                         )
                     }
                 </ul>

@@ -6,16 +6,17 @@ Meteor.startup(() => {
   // code to run on server at startup
 
   Meteor.publish('recipes', () => {
-    return Recipes.find({favorite: false});
+    return Recipes.find({favorite: false, ordered: false});
   });
 
   Meteor.publish('recipes-favorites', () => {
-    return Recipes.find({favorite: true});
+    return Recipes.find({favorite: true, ordered: false});
   });
 
   Meteor.publish('orders-by-chef-skill', (skills) => {
     return Orders.find({
-      tipoReceta: skills
+      'receta.tipo': skills,
+      complete: false
     });
   });
 
@@ -27,6 +28,7 @@ Meteor.startup(() => {
         tiempo: data.tiempo,
         precio: data.precio,
         favorite: false,
+        ordered: false,
         nombre: data.nombre
       }
       Recipes.insert( nuevaReceta);
@@ -60,22 +62,21 @@ Meteor.startup(() => {
       var nuevaOrden = {
         deliveryAddress: data.deliverAddress,
         username: data.username,
-        orden: data.order,
+        receta: data.recipe,
         complete: false
       }
 
       Orders.insert( nuevaOrden );
+
+      Recipes.update(data.recipe._id, {
+        $set: {
+          ordered: true
+        }
+      });
       return 'ok';
     },
-    'Orders.completarOrden'( data ){
-      var completedOrder = {
-        deliveryAddress: data.deliverAddress,
-        username: data.username,
-        orden: data.order,
-        complete: false
-      }
-
-      Orders.update( completedOrder, {
+    'Orders.completarOrden'( id ){
+      Orders.update( id, {
           $set: {
             complete: true
           }
