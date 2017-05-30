@@ -113,7 +113,9 @@ class Layout extends Component {
                     </div>
                 </Navbar>
                 <div className="container">
-                    {this.props.children && React.cloneElement(this.props.children, {})}
+                    {this.props.children && React.cloneElement(this.props.children, {
+                        user: this.props.user
+                    })}
                 </div>
             </div>
         );

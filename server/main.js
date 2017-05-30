@@ -5,6 +5,16 @@ import { Orders } from '../imports/api/index';
 Meteor.startup(() => {
   // code to run on server at startup
 
+  Meteor.publish('recipes', () => {
+    return Recipes.find({});
+  });
+
+  Meteor.publish('orders-by-chef-skill', (skills) => {
+    return Orders.find({
+      tipoReceta: skills
+    });
+  });
+
   Meteor.methods({
     'Recipes.nuevaReceta'( data ) {
       var nuevaReceta = {
@@ -34,13 +44,12 @@ Meteor.startup(() => {
         } else {
             throw 'Error';
         }
-    }
-
+    },
     'Orders.nuevaOrden'( data ){
       var nuevaOrden = {
         deliveryAddress: data.deliverAddress,
         username: data.username,
-        tipoReceta: data.tipoReceta;
+        tipoReceta: data.tipoReceta
       }
 
       Orders.insert( nuevaOrden );

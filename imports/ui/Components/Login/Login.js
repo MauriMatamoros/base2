@@ -15,11 +15,11 @@ class Login extends Component {
       var username = this.refs.username.value;
       var password = this.refs.password.value;
 
-      Meteor.loginWithPassword( username, password, function(error) {
+      var user = Meteor.loginWithPassword( username, password, function(error) {
         if (error) {
           alert("there was an error: " + error.reason);
         } else {
-          browserHistory.push('/recipes');
+          console.log(user);
         };
       }
     );

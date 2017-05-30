@@ -6,6 +6,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Login, Signup } from '../ui/Components/index';
 import Recipes from '../ui/Components/Recipes/Recipes';
 import Listrecipes from '../ui/Components/Listrecipes/Listrecipes';
+import Listordenes from '../ui/Components/Listordenes/Listordenes';
 import Adminsignup from '../ui/Components/AdminSignup/Adminsignup';
 import Chefsignup from '../ui/Components/Chefsignup/Chefsignup';
 import Layout from '../ui/Components/Layout';;
@@ -18,6 +19,7 @@ let routes = (
         <Route component={Layout} path="/">
             <IndexRoute component={Login}/>
             <Route path='recipes' component={Listrecipes}/>
+            <Route path='orders' component={Listordenes}/>
             <Route path='dashboard' component={Recipes}/>
             <Route path='signup' component={Signup}/>
             <Route path='adminsignup' component={Adminsignup}/>

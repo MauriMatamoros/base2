@@ -23,7 +23,7 @@ export default class Chefsignup extends Component {
                 if (error) {
                     alert("there was an error: " + error.reason);
                 } else {
-                    browserHistory.push('/dashboard');
+                    browserHistory.push('/orders');
                 };
             }
         );

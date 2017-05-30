@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Recipes } from '../../../api/index';
 import { browserHistory } from 'react-router';
 import { CHEF_USER, USER, ADMIN_USER } from '../../../environment/environment';
+import { Orders } from '../../../api/index';
 
-class Listrecipes extends Component {
+class Listordenes extends Component {
     // componentDidUpdate() {
     //     if(this.props.user) {
     //         if (this.props.user.profile.role === USER) {
@@ -35,11 +35,11 @@ class Listrecipes extends Component {
         return (
             <div className="list-container">
                 <div className="title">
-                    <h1>Menú de eChef</h1>
+                    <h1>Ordenes para el chef</h1>
                 </div>
                 <ul className="listing">
                     {
-                        this.props.recipes.length > 0 ? (
+                        this.props.orders.length > 0 ? (
                             this.props.recipes.map( recipe => (
                                 <li>
                                     <div className="list-element">
@@ -63,7 +63,7 @@ class Listrecipes extends Component {
                                 </li>
                             ))
                         ) : (
-                            <h1>No hay recetas</h1>
+                            <h1>No hay ordenes listas</h1>
                         )
                     }
                 </ul>
@@ -73,8 +73,8 @@ class Listrecipes extends Component {
 }
 
 export default createContainer((props) => {
-    let data = Meteor.subscribe('recipes');
+    let data = Meteor.subscribe('orders-by-chef-skill');
     return {
-        recipes: Recipes.find({}).fetch()
+        orders: Orders.find({}).fetch()
     };
-}, Listrecipes);
+}, Listordenes);
