@@ -44,6 +44,11 @@ class Listordenes extends Component {
                                                 <img src="./icons/order.svg" alt=""/>
                                             </div>
                                         </div>
+                                        <div>
+                                            <div>
+                                                <img src="./icons/finished.svg" style={{width:25 + "%"}} alt=""/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </li>
                             ))
