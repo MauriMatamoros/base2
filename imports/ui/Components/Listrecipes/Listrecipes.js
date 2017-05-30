@@ -41,7 +41,7 @@ class Listrecipes extends Component {
                                         </div>
                                         <div>
                                             <div>
-                                                <img src="./icons/order.svg" alt=""/>
+                                                <img src="./icons/order.svg" style={{width:25 + "%"}} alt=""/>
                                             </div>
                                         </div>
                                     </div>
