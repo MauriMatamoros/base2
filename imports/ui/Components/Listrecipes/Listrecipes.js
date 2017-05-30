@@ -4,6 +4,18 @@ import { Meteor } from 'meteor/meteor';
 import { Recipes } from '../../../api/index';
 
 class Listrecipes extends Component {
+    handleClickFavorites(recipe) {
+      e.preventDefault();
+      if (recipe) {
+        Meteor.call('User.addFavorites',recipe, (err) => {
+          if (err) {
+            alert('No se pudo agregar a favoritos');
+          }else {
+            alert('Se ha agregado exitosamente');
+          }
+        })
+      }
+    };
     render() {
         return (
             <div className="list-container">
@@ -22,7 +34,7 @@ class Listrecipes extends Component {
                                         <div className="list-title">
                                             {recipe.nombre}
                                         </div>
-                                        <div className="favorites-container">
+                                        <div className="favorites-container" onClick={() => this.handleClickFavorites(recipe)}>
                                             <div className="image-container">
                                                 <img src="./icons/star.svg" alt=""/>
                                             </div>
@@ -31,7 +43,7 @@ class Listrecipes extends Component {
                                 </li>
                             ))
                         ) : (
-                            <h1>No hay recetas</h1>  
+                            <h1>No hay recetas</h1>
                         )
                     }
                 </ul>
