@@ -1,27 +1,12 @@
 import React, { Component } from 'react';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
-import { browserHistory } from 'react-router';
-import { CHEF_USER, USER, ADMIN_USER } from '../../../environment/environment';
 
 export default class Recipes extends Component {
     constructor(props) {
       super(props);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
-    // componentDidUpdate() {
-    //     if(this.props.user) {
-    //         if (this.props.user.profile.role === USER) {
-    //             // browserHistory.push('/recipes');
-    //         }
-    //         if (this.props.user.profile.role === CHEF_USER) {
-    //             // browserHistory.push('/orders');
-    //         }
-    //         if (this.props.user.profile.role === ADMIN_USER) {
-    //             // browserHistory.push('/dashboard');
-    //         }
-    //     }
-    // }
     handleSubmit(e) {
       e.preventDefault();
       let nombre = this.refs.name.value;

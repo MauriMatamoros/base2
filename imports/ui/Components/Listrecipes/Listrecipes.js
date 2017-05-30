@@ -2,23 +2,8 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Recipes } from '../../../api/index';
-import { browserHistory } from 'react-router';
-import { CHEF_USER, USER, ADMIN_USER } from '../../../environment/environment';
 
 class Listrecipes extends Component {
-    // componentDidUpdate() {
-    //     if(this.props.user) {
-    //         if (this.props.user.profile.role === USER) {
-    //             // browserHistory.push('/recipes');
-    //         }
-    //         if (this.props.user.profile.role === CHEF_USER) {
-    //             // browserHistory.push('/orders');
-    //         }
-    //         if (this.props.user.profile.role === ADMIN_USER) {
-    //             // browserHistory.push('/dashboard');
-    //         }
-    //     }
-    // }
     handleClickFavorites(recipe) {
       e.preventDefault();
       if (recipe) {

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Tracker } from 'meteor/tracker';
 import React from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { USER, ADMIN_USER, CHEF_USER } from '../environment/environment';
 import { Login, Signup } from '../ui/Components/index';
 import Recipes from '../ui/Components/Recipes/Recipes';
 import Listrecipes from '../ui/Components/Listrecipes/Listrecipes';
@@ -12,7 +13,7 @@ import Chefsignup from '../ui/Components/Chefsignup/Chefsignup';
 import Layout from '../ui/Components/Layout';;
 
 
-const authenticatedPages = ['/recipes', '/dashboard'];
+const authenticatedPages = ['/recipes', '/dashboard', '/orders'];
 const unathenticatedPages = ['/signup','/'];
 let routes = (
     <Router history={browserHistory}>
@@ -29,14 +30,20 @@ let routes = (
 );
 
 Tracker.autorun(() => {
-    const isAuthenticated = !!Meteor.userId();
+    const isAuthenticated = Meteor.user();
     const pathname = browserHistory.getCurrentLocation().pathname;
     const isUnauthenticatedPage = unathenticatedPages.includes(pathname);
     const isAuthenticatedPage = authenticatedPages.includes(pathname);
-    if (isUnauthenticatedPage && isAuthenticated) {
-        browserHistory.push('/recipes');
-    }else if (!isAuthenticated && isAuthenticatedPage){
-        browserHistory.push('/');
+    if (isAuthenticated) {
+        if (isUnauthenticatedPage && (isAuthenticated.profile.role === USER)) {
+            browserHistory.push('/recipes');
+        }else if (isUnauthenticatedPage && (isAuthenticated.profile.role === CHEF_USER)) {
+            browserHistory.push('/orders');
+        }else if (isUnauthenticatedPage && (isAuthenticated.profile.role === ADMIN_USER)) {
+            browserHistory.push('/dashboard');
+        }else if (!isAuthenticated && isAuthenticatedPage){
+            browserHistory.push('/');
+        }
     }
 });
 
