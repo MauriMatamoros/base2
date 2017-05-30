@@ -3,16 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Recipes } from '../../../api/index';
 
-class Listrecipes extends Component {
-    handleClickFavorites(recipe) {
-      if (recipe) {
-        Meteor.call('User.addFavorites', recipe, function (err) {
-            if (err) {
-                alert('No se pudo completar la operacion');
-            }
-        });
-      }
-    }
+class Favoriterecipes extends Component {
     render() {
         return (
             <div className="list-container">
@@ -31,21 +22,11 @@ class Listrecipes extends Component {
                                         <div className="list-title">
                                             {recipe.nombre}
                                         </div>
-                                        <div className="favorites-container" onClick={() => this.handleClickFavorites(recipe)}>
-                                            <div className="image-container">
-                                                <img src="./icons/star.svg" alt=""/>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <img src="./icons/order.svg" style={{width:25 + "%"}} alt=""/>
-                                            </div>
-                                        </div>
                                     </div>
                                 </li>
                             ))
                         ) : (
-                            <h1>No hay recetas</h1>
+                            <h1>No hay recetas favoritas</h1>
                         )
                     }
                 </ul>
@@ -55,8 +36,8 @@ class Listrecipes extends Component {
 }
 
 export default createContainer((props) => {
-    let data = Meteor.subscribe('recipes');
+    let data = Meteor.subscribe('recipes-favorites');
     return {
         recipes: Recipes.find({}).fetch()
     };
-}, Listrecipes);
+}, Favoriterecipes);

@@ -6,7 +6,11 @@ Meteor.startup(() => {
   // code to run on server at startup
 
   Meteor.publish('recipes', () => {
-    return Recipes.find({});
+    return Recipes.find({favorite: false});
+  });
+
+  Meteor.publish('recipes-favorites', () => {
+    return Recipes.find({favorite: true});
   });
 
   Meteor.publish('orders-by-chef-skill', (skills) => {
@@ -21,7 +25,8 @@ Meteor.startup(() => {
         ingredientes: data.ingredients,
         tipo: data.tipo,
         tiempo: data.tiempo,
-        precio: data.precio
+        precio: data.precio,
+        favorite: false
       }
       Recipes.insert( nuevaReceta);
       return 'ok';
@@ -41,6 +46,11 @@ Meteor.startup(() => {
                     profile: currentUser.profile
                 }
             });
+            Recipes.update(data._id, {
+                $set: {
+                    favorite: true
+                }
+            })
         } else {
             throw 'Error';
         }
