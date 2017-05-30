@@ -60,10 +60,26 @@ Meteor.startup(() => {
       var nuevaOrden = {
         deliveryAddress: data.deliverAddress,
         username: data.username,
-        tipoReceta: data.tipoReceta
+        orden: data.order,
+        complete: false
       }
 
       Orders.insert( nuevaOrden );
+      return 'ok';
+    },
+    'Orders.completarOrden'( data ){
+      var completedOrder = {
+        deliveryAddress: data.deliverAddress,
+        username: data.username,
+        orden: data.order,
+        complete: false
+      }
+
+      Orders.update( completedOrder, {
+          $set: {
+            complete: true
+          }
+      } );
       return 'ok';
     }
   });

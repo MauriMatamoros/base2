@@ -4,6 +4,20 @@ import { Meteor } from 'meteor/meteor';
 import { Recipes } from '../../../api/index';
 
 class Listrecipes extends Component {
+  handleClickFavorites(order) {
+    if (order) {
+      let data = {
+        deliverAddress: this.props.user.profile.address,
+        username: this.props.user.profile.username,
+        order
+      };
+      Meteor.call('Orders.nuevaOrden', data, function (err) {
+          if (err) {
+              alert('No se pudo completar la operacion');
+          }
+      });
+    }
+  }
     handleClickFavorites(recipe) {
       if (recipe) {
         Meteor.call('User.addFavorites', recipe, function (err) {
@@ -37,7 +51,7 @@ class Listrecipes extends Component {
                                             </div>
                                         </div>
                                         <div>
-                                            <div>
+                                            <div onClick={() => this.handleClickComplete(recipe).bind(this)}>
                                                 <img src="./icons/order.svg" style={{width:25 + "%"}} alt=""/>
                                             </div>
                                         </div>
