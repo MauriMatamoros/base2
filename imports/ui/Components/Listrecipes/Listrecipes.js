@@ -23,7 +23,7 @@ class Listrecipes extends Component {
                     {
                         this.props.recipes.length > 0 ? (
                             this.props.recipes.map( recipe => (
-                                <li>
+                                <li key={recipe._id}>
                                     <div className="list-element">
                                         <div className="list-image">
                                             <img src="./icons/cook-hat.svg" alt=""/>

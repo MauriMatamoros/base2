@@ -26,7 +26,8 @@ Meteor.startup(() => {
         tipo: data.tipo,
         tiempo: data.tiempo,
         precio: data.precio,
-        favorite: false
+        favorite: false,
+        nombre: data.nombre
       }
       Recipes.insert( nuevaReceta);
       return 'ok';
