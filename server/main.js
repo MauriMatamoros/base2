@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import { Recipes } from '../imports/api/index'
+import { Recipes } from '../imports/api/index';
+import { Orders } from '../imports/api/index';
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -33,6 +34,17 @@ Meteor.startup(() => {
         } else {
             throw 'Error';
         }
+    }
+
+    'Orders.nuevaOrden'( data ){
+      var nuevaOrden = {
+        deliveryAddress: data.deliverAddress,
+        username: data.username,
+        tipoReceta: data.tipoReceta;
+      }
+
+      Orders.insert( nuevaOrden );
+      return 'ok';
     }
   });
 });
